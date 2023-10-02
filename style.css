@@ -1,0 +1,20 @@
+
+        /*สีปุ่มตอนยังไม่ชี้*/.btn-1{
+							color:orange;/*สีตัวหนังสือในปุ่ม*/
+							background-color:white;/*สีพื้นหลังปุ่ม*/
+							border-color:orange;/*สีเส้นขอบปุ่ม*/
+							border-width: 0.5px;/*ขนาดของเส้นขอบปุ่ม */
+							}
+/*สีปุ่มตอนชี้*/.btn-1:hover,.btn-1:focus,.btn-1.focus{
+					color:rgb(255, 255, 255);/*สีตัวหนังสือในปุ่ม*/
+					background:orange;/*พื้นหลังปุ่ม*/
+					border-color:orange;/*เส้นขอบปุ่ม*/
+					border-width: 0.5px;/*ขนาดของเส้นขอบปุ่ม*/
+					}
+					.ho:hover{
+						/* background-color: rgba(255, 203, 105, 0.955); */
+						background-image: linear-gradient(120deg,orange 0%, orange 10%, rgba(254,254,254,1) 15%);
+					}
+                    
+
+
