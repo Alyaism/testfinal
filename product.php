@@ -38,7 +38,6 @@
                 </div>
             </div>
 
-        ไอควยพีท test
         </div>
         
         <?php 
