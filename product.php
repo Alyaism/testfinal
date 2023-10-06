@@ -24,7 +24,7 @@
         while($row=mysqli_fetch_array($result)){
         ?>
         
-        <div class="col-lg-3 col-md-4 col-sm-5 p-2 mb-2 ho">
+        <div class=" col-lg-3 col-md-4 col-sm-5 p-2 mb-2 ho">
             <div class="text-center">
                 <div class="card"style="width:fluid;">
             <img src="img/<?=$row['product_img']?>" width="250px" height="250px"  class="card-img-top mt-1 p-1 border border-warning"> 

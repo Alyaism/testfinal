@@ -28,7 +28,7 @@ $row = mysqli_fetch_array($result); */
         <div class="alert alert-success" role="alert">
             รายการสั่งซื้อ
         </div>
-        <form id="form1" method="POST" action="">
+        <form id="form1" method="POST" action="insert_cart.php">
             <div class="row">
                 <div class="col-md">
                     <table class="table table-hover">
@@ -54,6 +54,7 @@ $row = mysqli_fetch_array($result); */
                                 $total = $_SESSION["strQty"][$i];
                                 $sum = $total * $row1['product_price'];
                                 $sumprice = $sumprice + $sum;
+                                $_SESSION["sumPrice"] = $sumprice;
                                 // $sumprice = number_format($sumprice, 2);
                         ?>
                                 <tr>
@@ -88,7 +89,7 @@ $row = mysqli_fetch_array($result); */
                     </table>
                     <div style="text-align:right">
                         <a type="button" class="btn btn-1" href="product.php">เลือกสินค้า</a>
-                        <a type="button" class="btn btn-1" href="">ยืนยัน</a>
+                        <button type="submit" class="btn btn-1" href="">ยืนยัน</button>
                     </div>
                 </div>
             </div>
@@ -97,7 +98,7 @@ $row = mysqli_fetch_array($result); */
                     <div class="alert alert-primary h4"  role="alert">ข้อมูล</div>
                 
                 ชื่อ-สกุล
-                <input type="text" name="cus_id" class="form-control" required placeholder="name....."><br>
+                <input type="text" name="cus_name" class="form-control" required placeholder="name....."><br>
                 ที่อยู่
                 <textarea name="cus_add" rows="3" class="form-control" required placeholder="ที่อยู๋....."></textarea><br>
                 เบอนร์

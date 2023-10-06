@@ -3,7 +3,6 @@
 ob_start();
 session_start();
 include('condb.php');
-
 if(!isset($_SESSION["intLine"]))
 {
     $_SESSION["intLine"] = 0;
@@ -13,6 +12,7 @@ if(!isset($_SESSION["intLine"]))
 }
 else
 {
+    print_r($_SESSION["strProductID"]);
     $key = array_search($_GET["id"],$_SESSION["strProductID"]);
     if((string)$key != "")
     {
