@@ -17,7 +17,8 @@
     <?php include('menu.php')?>
 <div class="container text-center">
 <br><br>
-    <div class="row ">
+
+    <div class="row  ">
         <?php 
         $sql = "SELECT * FROM product ORDER BY product_id";
         $result = mysqli_query($conn, $sql);

@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 include('condb.php');
 $cusName = $_POST['cus_name'];
 $cusAddress = $_POST['cus_add'];
@@ -28,11 +30,66 @@ for ($i = 0; $i <= (int)$_SESSION["intLine"]; $i++) {
         WHERE product_id= '".$_SESSION["strProductID"][$i]."'";
         mysqli_query($conn,$sql3);
         // echo"<script> alert('บันทึกข้อมูลเรียบร้อยแล้ว') </script>";
-        echo"<script> window.location='print_order.php'; alert('บันทึกข้อมูลเรียบร้อยแล้ว') </script>";
+        // echo"<script> window.location='print_order.php'; alert('บันทึกข้อมูลเรียบร้อยแล้ว') </script>";
 
     }
     }
 }
+//----------line----------------------------------- 
+if(isset($_POST['submit'])){
+$date = date("Y-m-d");
+    $sToken = "TtFZS0MzB5528F1o8PqhRB7HxfKuBMkLaYae3edJLKG";
+	$sMessage = "ตื่นๆ ออเดอเข้า \n";
+	$sMessage = "วันที่".$date."\n";
+	$sMessage = "มีการสั่งซื้อ \n";
+	$sMessage .= "เลขที่ใบสั่งซื้อ ".$orderID. " \n";
+	$sMessage .= "ลูกค้าชื่อ ".$cusName. " \n";
+	$sMessage .= "ที่อยู๋ ".$cusAddress. " \n";
+	$sMessage .= "เบอร์โทร ".$cusTel. " \n";
+
+	$chOne = curl_init(); 
+	curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+	curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+	curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+	curl_setopt( $chOne, CURLOPT_POST, 1); 
+	curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
+	$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
+	curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+	curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+	$result = curl_exec( $chOne ); 
+
+	//Result error 
+// 	if(curl_error($chOne)) 
+// 	{ 
+// 		echo 'error:' . curl_error($chOne); 
+// 	} 
+// 	else { 
+// 		$result_ = json_decode($result, true); 
+// 		echo "status : ".$result_['status']; echo "message : ". $result_['message'];
+// 	} 
+
+        if($result){
+            $_SESSION['success'] = "ส่งข้อมูลเข้าไลน์แล้ว";
+            header("location: print_order.php");
+
+        }else{
+            $_SESSION['error'] = "ไม่สำำเร็จ";
+            header("location: print_order.php");
+
+        }
+
+
+
+
+	curl_close( $chOne );  
+
+
+}
+//----------------------------------------------
+
+
+
+
 mysqli_close($conn);
 //   session_unset();
 

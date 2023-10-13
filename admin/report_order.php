@@ -25,8 +25,8 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="alert alert-warning text-center h4" role="alert">
-                        แสดงข้อมูลการสั่งซื้อสินค้า ยังไม่ได้ชำระเงิน
-                         </div>
+                            แสดงข้อมูลการสั่งซื้อสินค้า ยังไม่ได้ชำระเงิน
+                        </div>
                         <i class="fas fa-table me-1"></i>
                         แสดงข้อมูลการสั่งซื้อสินค้า
                         <div class="mt-1">
@@ -91,19 +91,22 @@
 
 
                             <tbody>
-                                
+
 
                                 <?php
-                                $dt1 = $_POST['dt1'];
-                                $dt2 = $_POST['dt2'];
-                                $add_date = date('Y/m/d', strtotime($dt2 . "+1 days")); 
-
-                                if(($dt1 !="") & ($dt2 !="")){
-                                    echo"ค้าหาจากวันที่ $dt1 ถึง $dt2";
+                                if (isset($_POST['dt1']) & isset($_POST['dt2'])) {
+                                    $dt1 = $_POST['dt1'];
+                                    $dt2 = $_POST['dt2'];
+                                    $add_date = date('Y/m/d', strtotime($dt2 . "+1 days"));
+                                    if (($dt1 != "") & ($dt2 != "")) {
+                                        echo "ค้าหาจากวันที่ $dt1 ถึง $dt2";
                                         $sql = "SELECT * FROM tb_order WHERE order_status = '1' AND reg_date BETWEEN '$dt1' AND '$add_date'
-                                         ORDER BY reg_date DESC";
-                                }else{
-                                $sql = "SELECT * FROM tb_order WHERE order_status = '1' ORDER BY reg_date DESC";
+                                             ORDER BY reg_date DESC";
+                                    }else {
+                                        $sql = "SELECT * FROM tb_order WHERE order_status = '1' ORDER BY reg_date DESC";
+                                    }
+                                } else {
+                                    $sql = "SELECT * FROM tb_order WHERE order_status = '1' ORDER BY reg_date DESC";
                                 }
 
                                 $result = mysqli_query($conn, $sql);

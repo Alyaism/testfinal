@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg fixed-top  bg-body-tertiary">
   <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,16 @@
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">ตะกร้า</a>
+          <a class="nav-link active" aria-current="page" href="cart.php">ตะกร้า</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-success" aria-current="page" href="admin/index.php">admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-success" aria-current="page" href="login.php">LOgin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-danger" aria-current="page" href="logout.php" >logout</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -37,3 +46,4 @@
     </div>
   </div>
 </nav>
+

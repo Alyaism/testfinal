@@ -44,7 +44,7 @@ $ids=$_GET['id']; ?>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>รหัสสินค้า</th>
+                                    <th>รหัสสินค้า</th> 
                                     <th>ชื่อสินค้า</th>
                                     <th>ราคา</th>
                                     <th>จำนวน</th>
